@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Shopping Calculator</title>
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+	<script src="js/angular.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/main.ctrl.js"></script>
+</head>
+<body ng-app="calc" ng-controller="shopControl as control" >
+	<h2  align="center">{{control.title}}</h2>
+	<div class="clearfix">
+	<form ng-submit="control.submit()" name="control.addForm">
+		<h4>Add a Item</h4>
+		<div class="row">
+			<div class="col-md-8 form-group">
+				<label>Item Name</label>
+				<input type="text" required id="name" class="form-control" ng-model="control.holder.name">
+			</div>
+			<div class="col-md-4 form-group">
+				<label >Cost</label>
+				<input required type="number" class="form-control" ng-model="control.holder.cost">
+			</div>
+		</div>
+		<center><input type="submit" value="Submit" class="btn btn-primary"/></center>
+		</form>
+	</div>
+	<br><br>
+	<div class="clearfix">
+	<p style="font-size:22px;">Products: </p>
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="obj in control.products">{{obj.name}} <span class="badge">{{obj.cost}}</span></li>
+	</ul>
+	</div>
+	<br><br>
+	<p>Total cost is: {{control.cost}}</p>
+	<br>
+	<button ng-click="control.save()" class="btn btn-success">Save List</button>
+	<button ng-click="control.delete()" class="btn btn-danger">Delete List</button>
+</body>
+</html>
